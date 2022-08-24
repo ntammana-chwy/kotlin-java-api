@@ -15,5 +15,4 @@ public class JavaDemoService {
         throw new JavaTestException("Something went wrong");
     }
   }
-
 }
