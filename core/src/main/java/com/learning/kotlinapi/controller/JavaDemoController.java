@@ -14,7 +14,8 @@ public class JavaDemoController {
 
   public final JavaDemoService service;
 
-  // Field injection is not recommended -> therefore constructor injection is the more viable approach
+  // Field injection is not recommended -> therefore constructor injection is the more viable
+  // approach
   public JavaDemoController(JavaDemoService service) {
     this.service = service;
   }

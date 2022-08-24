@@ -11,6 +11,7 @@ public class JavaGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(JavaTestException.class)
   public ResponseEntity<JavaErrorResponse> handleTestException(JavaTestException ex) {
-    return ResponseEntity.badRequest().body(new JavaErrorResponse(ex.getMessage(), 400));
+    return ResponseEntity.badRequest()
+        .body(JavaErrorResponse.builder().errorMessage(ex.getMessage()).errorCode(400).build());
   }
 }

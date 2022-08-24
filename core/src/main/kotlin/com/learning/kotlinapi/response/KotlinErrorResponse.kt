@@ -18,4 +18,4 @@ fun KotlinErrorResponse.toRandomResponse() =
     z = "Some random string"
   )
 
-fun KotlinErrorResponse.toRandomString() = "Hello world lol"
+fun KotlinErrorResponse.toRandomString() = "Some Random String"
