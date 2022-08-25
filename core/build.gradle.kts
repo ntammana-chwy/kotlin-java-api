@@ -18,7 +18,9 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
     compileOnly("org.projectlombok:lombok:1.18.24")
+    implementation("org.projectlombok:lombok:1.18.24")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -26,15 +28,16 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("javax.inject:javax.inject:1")
     implementation("junit:junit:4.13.1")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.4.2")
 }
 
 spotless {
     java {
-        importOrder();
-        removeUnusedImports();
-        googleJavaFormat("1.9");
+        importOrder()
+        removeUnusedImports()
+        googleJavaFormat("1.9")
 
         // Listing other formatting options here
         // eclipse()

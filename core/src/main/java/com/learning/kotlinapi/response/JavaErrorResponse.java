@@ -1,18 +1,17 @@
 package com.learning.kotlinapi.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class JavaErrorResponse {
   public String errorMessage;
   public Integer errorCode;
-
-  public JavaErrorResponse(String message, Integer code) {
-    this.errorCode = code;
-    this.errorMessage = message;
-  }
 
   public JavaRandomResponse toRandomResponse() {
     return JavaRandomResponse.builder().x("x").y("y").z("z").build();

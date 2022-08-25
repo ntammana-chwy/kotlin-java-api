@@ -38,4 +38,8 @@ In Intellij we can edit the run configuration for our app when starting it up lo
 
 ---
 
+Run core:check using application-test.yaml
+- `./gradlew core:bootrun -Dspring.profiles.active=local`
+- `./gradlew core:bootrun -Dspring.profiles.active=default`
+- `./gradlew core:check -Dspring.profiles.active=test`
 
