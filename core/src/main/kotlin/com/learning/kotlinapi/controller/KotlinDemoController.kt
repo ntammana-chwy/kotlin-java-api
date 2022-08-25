@@ -1,5 +1,6 @@
 package com.learning.kotlinapi.controller
 
+import com.learning.kotlinapi.response.RandomAPIResponse
 import com.learning.kotlinapi.service.KotlinDemoService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +15,7 @@ class KotlinDemoController(
 ) {
 
     @GetMapping("/hello/{status}")
-    fun printHello(@PathVariable status: String): ResponseEntity<String> {
+    fun printHello(@PathVariable status: String): ResponseEntity<RandomAPIResponse> {
         return kotlinDemoService.getHelloWorldString(status)
             .let { ResponseEntity.ok().body(it) }
     }

@@ -18,9 +18,12 @@ repositories {
 }
 
 dependencies {
+    // Lombok for Java
     annotationProcessor("org.projectlombok:lombok:1.18.24")
     compileOnly("org.projectlombok:lombok:1.18.24")
     implementation("org.projectlombok:lombok:1.18.24")
+
+    // Spring Boot Framework
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -29,6 +32,15 @@ dependencies {
     implementation("javax.inject:javax.inject:1")
     implementation("junit:junit:4.13.1")
 
+    // Retrofit and Jackson
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.13.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
+
+    // Testing Framework
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.4.2")
 }
@@ -39,7 +51,7 @@ spotless {
         removeUnusedImports()
         googleJavaFormat("1.9")
 
-        // Listing other formatting options here
+        /** Listing other formatting options here **/
         // eclipse()
         // prettier(['prettier': '2.0.5', 'prettier-plugin-java': '0.8.0']).config(['parser': 'java', 'tabWidth': 4])
         // palantirJavaFormat()

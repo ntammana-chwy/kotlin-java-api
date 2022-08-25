@@ -1,14 +1,17 @@
 package com.learning.kotlinapi.service
 
 import com.learning.kotlinapi.exception.KotlinTestException
+import com.learning.kotlinapi.external.RandomAPIService
+import com.learning.kotlinapi.response.RandomAPIResponse
 import org.springframework.stereotype.Service
 
 @Service
-class KotlinDemoService {
-    fun getHelloWorldString(request: String): String =
-        when (request) {
-            "true" -> "Hello World - ok"
-            "false" -> "Hello World - bad request"
+class KotlinDemoService(private val randomAPIService: RandomAPIService) {
+    fun getHelloWorldString(request: String): RandomAPIResponse? {
+        return when (request) {
+            "true" -> randomAPIService.getApiClient().getRandomAddress().execute().body()
+            "false" -> null
             else -> throw KotlinTestException("Something went wrong")
         }
+    }
 }
