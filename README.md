@@ -1,8 +1,6 @@
 # Example Demo Project (Java and Kotlin - Spring Boot)
 
----
-
-# Getting Started
+## Getting Started
 
 ###### Clone the repository
 ###### Configure Project in Intellij and Startup (Professional Recommended)
@@ -43,3 +41,10 @@ Run core:check using application-test.yaml
 - `./gradlew core:bootrun -Dspring.profiles.active=default`
 - `./gradlew core:check -Dspring.profiles.active=test`
 
+---
+
+### Terraform
+
+In this repo, we are introducing api and terraform in the same repo
+
+We are enhancing this using CI - github workflows
