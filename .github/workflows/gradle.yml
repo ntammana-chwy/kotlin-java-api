@@ -13,16 +13,16 @@ jobs:
       - name: Build Core
         run: ./gradlew core:build
 
-  terraform:
-    name: Deploy Site
+  tf:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout Repo
         uses: actions/checkout@v1
 
       - name: Terraform Init
         uses: hashicorp/terraform-github-actions/init@v0.4.0
-        working-directory: '/core-terraform/terraform'
         env:
+          TF_ACTION_WORKING_DIR: 'core-terraform/terraform'
           AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
