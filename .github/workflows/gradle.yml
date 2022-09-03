@@ -25,16 +25,16 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: |
-        cd core-terraform/terraform
-        terraform validate
+          cd core-terraform/terraform
+          terraform validate
       - name: Terraform Init
         id: init
         run: | 
-        cd core-terraform/terraform
-        terraform init
+          cd core-terraform/terraform
+          terraform init
       - name: Terraform Plan
         id: plan
         run: |
-        cd core-terraform/terraform
-        terraform plan
+          cd core-terraform/terraform
+          terraform plan
 
