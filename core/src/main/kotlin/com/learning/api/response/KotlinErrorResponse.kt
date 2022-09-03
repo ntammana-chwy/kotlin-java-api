@@ -1,4 +1,4 @@
-package com.learning.kotlinapi.response
+package com.learning.api.response
 
 data class KotlinErrorResponse(
     val errorMessage: String,

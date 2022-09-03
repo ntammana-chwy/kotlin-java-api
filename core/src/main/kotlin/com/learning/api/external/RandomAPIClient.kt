@@ -1,6 +1,6 @@
-package com.learning.kotlinapi.external
+package com.learning.api.external
 
-import com.learning.kotlinapi.response.RandomAPIResponse
+import com.learning.api.response.RandomAPIResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

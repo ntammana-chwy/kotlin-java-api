@@ -1,8 +1,8 @@
-package com.learning.kotlinapi.controller
+package com.learning.api.controller
 
-import com.learning.kotlinapi.config.Logger
-import com.learning.kotlinapi.response.RandomAPIResponse
-import com.learning.kotlinapi.service.KotlinDemoService
+import com.learning.api.config.Logger
+import com.learning.api.response.RandomAPIResponse
+import com.learning.api.service.KotlinDemoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

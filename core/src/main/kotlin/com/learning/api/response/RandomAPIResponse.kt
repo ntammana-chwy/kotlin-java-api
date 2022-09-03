@@ -1,4 +1,4 @@
-package com.learning.kotlinapi.response
+package com.learning.api.response
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming

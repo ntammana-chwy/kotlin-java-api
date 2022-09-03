@@ -1,4 +1,4 @@
-package com.learning.kotlinapi
+package com.learning.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties

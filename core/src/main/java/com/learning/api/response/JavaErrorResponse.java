@@ -1,4 +1,4 @@
-package com.learning.kotlinapi.response;
+package com.learning.api.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

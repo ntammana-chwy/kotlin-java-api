@@ -1,4 +1,4 @@
-package com.learning.kotlinapi.external
+package com.learning.api.external
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.context.annotation.Configuration

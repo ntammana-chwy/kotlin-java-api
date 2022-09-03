@@ -1,6 +1,6 @@
-package com.learning.kotlinapi
+package com.learning.api
 
-import com.learning.kotlinapi.response.RandomAPIResponse
+import com.learning.api.response.RandomAPIResponse
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test

@@ -1,6 +1,6 @@
-package com.learning.kotlinapi.service;
+package com.learning.api.service;
 
-import com.learning.kotlinapi.exception.JavaTestException;
+import com.learning.api.exception.JavaTestException;
 import org.springframework.stereotype.Service;
 
 @Service

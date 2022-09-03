@@ -1,8 +1,8 @@
-package com.learning.kotlinapi.service
+package com.learning.api.service
 
-import com.learning.kotlinapi.exception.KotlinTestException
-import com.learning.kotlinapi.external.RandomAPIService
-import com.learning.kotlinapi.response.RandomAPIResponse
+import com.learning.api.exception.KotlinTestException
+import com.learning.api.external.RandomAPIService
+import com.learning.api.response.RandomAPIResponse
 import org.springframework.stereotype.Service
 
 @Service

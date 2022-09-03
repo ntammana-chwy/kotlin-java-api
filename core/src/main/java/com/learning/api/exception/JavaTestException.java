@@ -1,4 +1,4 @@
-package com.learning.kotlinapi.exception;
+package com.learning.api.exception;
 
 public class JavaTestException extends Exception {
   public JavaTestException(String message) {

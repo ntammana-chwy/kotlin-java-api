@@ -1,6 +1,6 @@
-package com.learning.kotlinapi.exception;
+package com.learning.api.exception;
 
-import com.learning.kotlinapi.response.JavaErrorResponse;
+import com.learning.api.response.JavaErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

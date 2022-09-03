@@ -1,7 +1,7 @@
-package com.learning.kotlinapi.controller;
+package com.learning.api.controller;
 
-import com.learning.kotlinapi.exception.JavaTestException;
-import com.learning.kotlinapi.service.JavaDemoService;
+import com.learning.api.exception.JavaTestException;
+import com.learning.api.service.JavaDemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
