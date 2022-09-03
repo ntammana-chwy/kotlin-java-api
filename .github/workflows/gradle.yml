@@ -15,14 +15,18 @@ jobs:
 
   tf:
     runs-on: ubuntu-latest
+    env:
+      TF_ACTION_WORKING_DIR: 'core-terraform/terraform'
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
 
-      - name: Checkout Repo
-        uses: actions/checkout@v1
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
 
       - name: Terraform Init
-        uses: hashicorp/terraform-github-actions/init@v0.4.0
-        env:
-          TF_ACTION_WORKING_DIR: 'core-terraform/terraform'
-          AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        id: init
+        run: terraform init
