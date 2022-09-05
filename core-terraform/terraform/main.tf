@@ -41,7 +41,7 @@ resource "aws_lambda_function" "test_lambda" {
   filename      = "lambda_function_payload.zip"
   function_name = "${var.environment}-test-lambda"
   role          = aws_iam_role.test_role.arn
-  handler       = "com.chewy.autoship.subscriptionprocessor.RequestHandler"
+  handler       = "RequestHandler"
   runtime       = "java11"
 
   ephemeral_storage {
