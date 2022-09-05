@@ -41,8 +41,8 @@ resource "aws_lambda_function" "test_lambda" {
   filename      = "lambda_function_payload.zip"
   function_name = "${var.environment}-test-lambda"
   role          = aws_iam_role.test_role.arn
-  handler       = "index.test"
-  runtime       = "nodejs14.x"
+  handler       = "com.chewy.autoship.subscriptionprocessor.RequestHandler"
+  runtime       = "java11"
 
   ephemeral_storage {
     size = 10240 # Min 512 MB and the Max 10240 MB

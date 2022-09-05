@@ -10,8 +10,8 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-      - name: build
-        run: ./gradlew core:build
+#      - name: build
+#        run: ./gradlew core:build
         # Terraform deploys qat, dev, stg
       - name: terraform qat init, validate, apply
         if: github.ref != 'refs/heads/main'
