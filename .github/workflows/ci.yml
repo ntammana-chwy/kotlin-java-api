@@ -10,14 +10,14 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-#      - name: Build Core
-#        run: ./gradlew core:build
-      - name: Terraform init, validate, apply
+      - name: build
+        run: ./gradlew core:build
+      - name: terraform init, validate, apply
         run: |
           cd core-terraform/terraform
           terraform init
           terraform validate
-          terraform apply
+          terraform apply -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
