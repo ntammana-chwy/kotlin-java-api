@@ -10,8 +10,8 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-      - name: Build Core
-        run: ./gradlew core:build
+#      - name: Build Core
+#        run: ./gradlew core:build
       - name: Terraform init, validate, apply
         run: |
           cd core-terraform/terraform
