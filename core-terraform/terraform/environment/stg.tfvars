@@ -1,1 +1,1 @@
-environment = "qat"
+environment = "stg"
