@@ -6,12 +6,7 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket = "nikhil-bucket-testing"
-    key    = "terraform/terraform.tfstate"
-    region = "us-east-1"
-  }
-
+  backend "s3" {}
   required_version = ">= 1.2.0"
 }
 
@@ -20,7 +15,7 @@ provider "aws" {
 }
 
 resource "aws_dynamodb_table" "learning-db" {
-  name           = "learning-db"
+  name           = "${var.environment}-learning-db"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
