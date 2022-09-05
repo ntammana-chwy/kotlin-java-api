@@ -13,32 +13,11 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-resource "aws_iam_role" "test_role" {
-  name = "test_role"
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = "*"
-      },
-    ]
-  })
-
-  tags = {
-    tag-key = "tag-value"
-  }
-}
 
 resource "aws_lambda_function" "test_lambda" {
   filename      = "lambda_function_payload.zip"
   function_name = "${var.environment}-test-lambda"
-  role          = aws_iam_role.test_role.arn
+  role          = "arn:aws:iam::496721647268:role/test_role"
   handler       = "RequestHandler"
   runtime       = "java11"
 
