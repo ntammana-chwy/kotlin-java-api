@@ -20,7 +20,7 @@ provider "aws" {
 }
 
 resource "aws_dynamodb_table" "learning-db" {
-  name           = "LearningDynamoDB"
+  name           = "learning-db"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
@@ -33,11 +33,6 @@ resource "aws_dynamodb_table" "learning-db" {
 
   attribute {
     name = "sk"
-    type = "S"
-  }
-
-  attribute {
-    name = "test"
     type = "S"
   }
 
