@@ -12,11 +12,12 @@ jobs:
           distribution: 'adopt'
       - name: build
         run: ./gradlew core:build
+        # Terraform deploys qat, dev, stg
       - name: terraform qat init, validate, apply
         if: github.ref != 'refs/heads/main'
         run: |
           cd core-terraform/terraform
-          terraform init -backend-config=conf/qat.conf
+          terraform init -backend-config=conf/qat.conf -reconfigure
           terraform validate
           terraform apply -auto-approve -var-file=environment/qat.tfvars
         env:
@@ -29,6 +30,17 @@ jobs:
           terraform init -backend-config=conf/dev.conf -reconfigure
           terraform validate
           terraform apply -auto-approve -var-file=environment/dev.tfvars
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # If main branch then deploy stg terraform
+      - name: terraform stg init, validate, apply
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd core-terraform/terraform
+          terraform init -backend-config=conf/stg.conf -reconfigure
+          terraform validate
+          terraform apply -auto-approve -var-file=environment/stg.tfvars
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
