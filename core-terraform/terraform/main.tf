@@ -36,6 +36,11 @@ resource "aws_dynamodb_table" "learning-db" {
     type = "S"
   }
 
+  attribute {
+    name = "test"
+    type = "S"
+  }
+
   tags = {
     Name        = "learning"
     Environment = "testing"
