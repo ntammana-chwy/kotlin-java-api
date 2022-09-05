@@ -26,7 +26,7 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
           cd core-terraform/terraform
-          terraform init -backend-config=conf/dev.conf
+          terraform init -backend-config=conf/dev.conf -reconfigure
           terraform validate
           terraform apply -auto-approve -var-file=environment/dev.tfvars
         env:
