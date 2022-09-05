@@ -3,3 +3,7 @@ variable "instance_name" {
   type        = string
   default     = "YetAnotherName"
 }
+
+variable "environment" {
+  description = "The Chewy environment this resource will be deployed in: qat, stg, prd."
+}

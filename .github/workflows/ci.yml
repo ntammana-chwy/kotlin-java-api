@@ -12,12 +12,13 @@ jobs:
           distribution: 'adopt'
       - name: build
         run: ./gradlew core:build
-      - name: terraform init, validate, apply
+      - name: terraform qat init, validate, apply
+        if: github.ref != 'refs/heads/main'
         run: |
           cd core-terraform/terraform
-          terraform init
+          terraform init -backend-config=qat.conf
           terraform validate
-          terraform apply -auto-approve
+          terraform apply -auto-approve -var-file=environment/qat.tfvars
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
