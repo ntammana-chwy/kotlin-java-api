@@ -20,7 +20,7 @@ data "aws_iam_role" "test-role" {
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "lambda.jar"
+  filename      = "lambda-${var.git_hash}.jar"
   function_name = "${var.environment}-test-lambda"
   role          = data.aws_iam_role.test-role.arn
   handler       = "com.learning.lambda.RequestHandler"

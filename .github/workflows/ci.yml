@@ -57,7 +57,7 @@ jobs:
       - name: build
         run: |
           ./gradlew lambda:build
-          cp lambda/build/libs/*-all.jar lambda-terraform/terraform/lambda.jar
+          cp lambda/build/libs/*-all.jar lambda-terraform/terraform/lambda-${GITHUB_REF#refs/heads/}.jar
         # Terraform deploys qat, dev, stg
       - name: terraform qat init, validate, apply
         if: github.ref != 'refs/heads/main'
@@ -65,7 +65,7 @@ jobs:
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/qat.conf -reconfigure
           terraform validate
-          terraform apply -auto-approve -var-file=environment/qat.tfvars
+          terraform apply -auto-approve -var-file=environment/qat.tfvars -var=${GITHUB_REF#refs/heads/}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -75,7 +75,7 @@ jobs:
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/dev.conf -reconfigure
           terraform validate
-          terraform apply -auto-approve -var-file=environment/dev.tfvars
+          terraform apply -auto-approve -var-file=environment/dev.tfvars -var=${GITHUB_REF#refs/heads/}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -86,7 +86,7 @@ jobs:
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/stg.conf -reconfigure
           terraform validate
-          terraform apply -auto-approve -var-file=environment/stg.tfvars
+          terraform apply -auto-approve -var-file=environment/stg.tfvars -var=${GITHUB_REF#refs/heads/}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
