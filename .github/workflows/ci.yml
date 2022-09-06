@@ -13,7 +13,8 @@ jobs:
       - name: build
         run: | 
           ./gradlew core:build
-          cp core/build/libs/core-0.0.1-SNAPSHOT.jar core-terraform/terraform
+          ./gradlew core:shadowJar
+          cp core/build/libs/*-all.jar core-terraform/terraform/core.jar
         # Terraform deploys qat, dev, stg
       - name: terraform qat init, validate, apply
         if: github.ref != 'refs/heads/main'

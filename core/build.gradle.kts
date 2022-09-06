@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.12.RELEASE"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
     id("com.diffplug.spotless") version "6.9.1"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
 }
