@@ -1,16 +1,14 @@
 package com.learning.lambda
 
-import com.learning.lambda.config.Logger
-import io.micronaut.function.FunctionBean
 import io.micronaut.function.aws.MicronautRequestHandler
+import mu.KotlinLogging
 
-@FunctionBean
 class RequestHandler : MicronautRequestHandler<String, String>() {
 
     override fun execute(input: String): String {
-        log.info("Received input: $input")
+        logger.info("Received input: $input")
         return input
     }
 
-    companion object : Logger()
+    private val logger = KotlinLogging.logger {}
 }

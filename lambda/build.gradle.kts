@@ -19,7 +19,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.24")
     compileOnly("org.projectlombok:lombok:1.18.24")
     implementation("org.projectlombok:lombok:1.18.24")
-
+    implementation("io.github.microutils:kotlin-logging-jvm:2.1.20")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut.aws:micronaut-function-aws-test")
