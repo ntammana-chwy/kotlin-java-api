@@ -57,7 +57,6 @@ jobs:
       - name: build
         run: |
           ./gradlew lambda:build
-          cp lambda/build/libs/*-all.jar lambda-terraform/terraform/lambda-${GITHUB_REF#refs/heads/}.jar
       - name: copy jar to terraform directory
         run: |
           echo jars in libs directory
