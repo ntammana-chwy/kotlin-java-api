@@ -1,13 +1,5 @@
 name: CI
-on:
-  pull_request:
-    branches:
-      - *
-  push:
-    branches:
-      - *
-    tags:
-      - *
+on: [ create, push, pull_request, deployment ]
 jobs:
   core:
     runs-on: ubuntu-latest
