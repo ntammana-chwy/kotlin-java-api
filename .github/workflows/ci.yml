@@ -55,47 +55,41 @@ jobs:
           java-version: 11
           distribution: 'adopt'
       - name: build
-        run: |
-          ./gradlew lambda:build
+        run: ./gradlew lambda:build
       - name: copy jar to terraform directory
         run: |
-          echo jars in libs directory
-          ls lambda/build/libs/
-          echo ${GITHUB_REF#refs/heads/}
-          echo ${GITHUB_SHA}
           cp lambda/build/libs/*-all.jar lambda-terraform/terraform/lambda-${GITHUB_SHA}.jar
-          ls lambda-terraform/terraform
-
+          echo created: lambda-terraform/terraform/lambda-${GITHUB_SHA}.jar
         # Terraform deploys qat, dev, stg
-#      - name: terraform qat init, validate, apply
-#        if: github.ref != 'refs/heads/main'
-#        run: |
-#          cd lambda-terraform/terraform
-#          terraform init -backend-config=conf/qat.conf -reconfigure
-#          terraform validate
-#          terraform apply -auto-approve -var-file=environment/qat.tfvars -var=${GITHUB_REF#refs/heads/}
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#      - name: terraform dev init, validate, apply
-#        if: github.ref != 'refs/heads/main'
-#        run: |
-#          cd lambda-terraform/terraform
-#          terraform init -backend-config=conf/dev.conf -reconfigure
-#          terraform validate
-#          terraform apply -auto-approve -var-file=environment/dev.tfvars -var=${GITHUB_REF#refs/heads/}
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        # If main branch then deploy stg terraform
-#      - name: terraform stg init, validate, apply
-#        if: github.ref == 'refs/heads/main'
-#        run: |
-#          cd lambda-terraform/terraform
-#          terraform init -backend-config=conf/stg.conf -reconfigure
-#          terraform validate
-#          terraform apply -auto-approve -var-file=environment/stg.tfvars -var=${GITHUB_REF#refs/heads/}
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: terraform qat init, validate, apply
+        if: github.ref != 'refs/heads/main'
+        run: |
+          cd lambda-terraform/terraform
+          terraform init -backend-config=conf/qat.conf -reconfigure
+          terraform validate
+          terraform apply -auto-approve -var-file=environment/qat.tfvars -var=${GITHUB_SHA}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: terraform dev init, validate, apply
+        if: github.ref != 'refs/heads/main'
+        run: |
+          cd lambda-terraform/terraform
+          terraform init -backend-config=conf/dev.conf -reconfigure
+          terraform validate
+          terraform apply -auto-approve -var-file=environment/dev.tfvars -var=${GITHUB_SHA}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # If main branch then deploy stg terraform
+      - name: terraform stg init, validate, apply
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd lambda-terraform/terraform
+          terraform init -backend-config=conf/stg.conf -reconfigure
+          terraform validate
+          terraform apply -auto-approve -var-file=environment/stg.tfvars -var=${GITHUB_SHA}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
