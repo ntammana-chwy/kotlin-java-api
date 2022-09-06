@@ -52,7 +52,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         # If main branch then deploy stg terraform
       - name: deploy to stg (terraform)
-        if: startsWith(github.ref_name, "rc/" )
+        if: startsWith(github.ref_name, 'rc/')
         run: |
           cd core-terraform/terraform
           terraform init -backend-config=conf/stg.conf -reconfigure
@@ -114,7 +114,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         # If main branch then deploy stg terraform
       - name: deploy to stg (terraform)
-        if: startsWith(github.ref_name, "rc/" )
+        if: startsWith(github.ref_name, 'rc/')
         run: |
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/stg.conf -reconfigure
