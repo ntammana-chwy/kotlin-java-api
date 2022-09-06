@@ -7,3 +7,7 @@ variable "instance_name" {
 variable "environment" {
   description = "The Chewy environment this resource will be deployed in: qat, stg, prd."
 }
+
+variable "git_hash" {
+  description = "Github Commit Hash"
+}
