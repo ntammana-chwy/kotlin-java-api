@@ -1,4 +1,4 @@
-package com.learning.api.config
+package com.learning.lambda.config
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,6 +1,6 @@
 package com.learning.lambda
 
-import com.learning.api.config.Logger
+import com.learning.lambda.config.Logger
 import io.micronaut.function.FunctionBean
 import io.micronaut.function.aws.MicronautRequestHandler
 
