@@ -19,7 +19,7 @@ data "aws_iam_role" "test-role" {
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "core-terraform/terraform/core-0.0.1-SNAPSHOT.jar"
+  filename      = "core-0.0.1-SNAPSHOT.jar"
   function_name = "${var.environment}-test-lambda"
   role          = data.aws_iam_role.test-role.arn
   handler       = "RequestHandler"
