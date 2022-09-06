@@ -14,6 +14,22 @@ provider "aws" {
   region = "us-east-1"
 }
 
+data "aws_iam_role" "test-role" {
+  name = "test_role"
+}
+
+resource "aws_lambda_function" "test_lambda" {
+  filename      = "core.jar"
+  function_name = "${var.environment}-test-lambda"
+  role          = data.aws_iam_role.test-role.arn
+  handler       = "RequestHandler"
+  runtime       = "java11"
+
+  ephemeral_storage {
+    size = 10240 # Min 512 MB and the Max 10240 MB
+  }
+}
+
 resource "aws_dynamodb_table" "learning-db" {
   name           = "${var.environment}-learning-db"
   billing_mode   = "PROVISIONED"
