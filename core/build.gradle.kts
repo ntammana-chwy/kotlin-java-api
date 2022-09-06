@@ -69,3 +69,7 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.build {
+    dependsOn(tasks.shadowJar)
+}
