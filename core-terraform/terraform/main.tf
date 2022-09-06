@@ -14,12 +14,18 @@ provider "aws" {
   region = "us-east-1"
 }
 
+data "archive_file" "init" {
+  type        = "zip"
+  source_file = "${path.module}/init.tpl"
+  output_path = "${path.module}/files/init.zip"
+}
+
 data "aws_iam_role" "test-role" {
   name = "test_role"
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "lambda_function_payload.zip"
+  filename      = "core-0.0.1-SNAPSHOT.jar"
   function_name = "${var.environment}-test-lambda"
   role          = data.aws_iam_role.test-role.arn
   handler       = "RequestHandler"
