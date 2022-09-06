@@ -1,4 +1,4 @@
-output "dynamodb-id" {
-  description = "Dynamo DB id"
-  value       = aws_dynamodb_table.learning-db.id
+output "lambda-arn" {
+  description = "Lambda arn"
+  value       = aws_lambda_function.test_lambda.arn
 }
