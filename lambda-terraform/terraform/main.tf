@@ -25,6 +25,7 @@ resource "aws_lambda_function" "test_lambda" {
   role          = data.aws_iam_role.test-role.arn
   handler       = "com.learning.lambda.RequestHandler"
   runtime       = "java11"
+  memory_size   = 2048
 
   ephemeral_storage {
     size = 10240 # Min 512 MB and the Max 10240 MB
