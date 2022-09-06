@@ -14,12 +14,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-data "archive_file" "init" {
-  type        = "zip"
-  source_file = "${path.module}/init.tpl"
-  output_path = "${path.module}/files/init.zip"
-}
-
 data "aws_iam_role" "test-role" {
   name = "test_role"
 }
