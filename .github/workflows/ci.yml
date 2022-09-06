@@ -15,7 +15,7 @@ jobs:
           ./gradlew core:build
         # Terraform deploys qat, dev, stg
       - name: tf init/validate (qat)
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: |
           cd core-terraform/terraform
           terraform init -backend-config=conf/qat.conf -reconfigure
@@ -24,7 +24,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: tf init/validate (dev)
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: |
           cd core-terraform/terraform
           terraform init -backend-config=conf/dev.conf -reconfigure
@@ -77,7 +77,7 @@ jobs:
           echo created: lambda-terraform/terraform/lambda-${GITHUB_SHA}.jar
         # Terraform deploys qat, dev, stg
       - name: tf init/validate (qat)
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: |
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/qat.conf -reconfigure
@@ -86,7 +86,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: tf init/validate (dev)
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: |
           cd lambda-terraform/terraform
           terraform init -backend-config=conf/dev.conf -reconfigure
